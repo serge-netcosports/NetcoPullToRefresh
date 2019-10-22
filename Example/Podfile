@@ -3,6 +3,11 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target 'Oculis_Example' do
-  pod 'Oculis', :path => '../'
+
+  # Core with config service
+  pod 'Oculis/Core', :path => '../'
+
+  # Analytics services
+  pod 'Oculis/AnalyticsServices', :path => '../'
   
 end

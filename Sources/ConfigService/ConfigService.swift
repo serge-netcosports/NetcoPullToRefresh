@@ -61,13 +61,13 @@ extension ConfigService {
 
   public class Settings {
 
-    public typealias RequesProvider = () throws -> Request<Model>
+    public typealias RequestProvider = () throws -> Request<Model>
 
     public let localConfigName: String
     public var initURL: String = ""
-    public var initRequest: RequesProvider?
+    public var initRequest: RequestProvider?
 
-    public init(localConfigName: String, initRequest: RequesProvider? = nil) {
+    public init(localConfigName: String, initRequest: RequestProvider? = nil) {
       self.localConfigName = localConfigName
       self.initRequest = initRequest
     }

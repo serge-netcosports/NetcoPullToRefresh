@@ -9,46 +9,22 @@
 import UIKit
 import Astrarium
 import RxSwift
+import Oculis
 
 @UIApplicationMain
 class AppDelegate: Astrarium.AppDelegate {
 
-  var window: UIWindow?
-
-  let disposeBag = DisposeBag()
-
-  override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: LaunchOptions? = nil) -> Bool {
-
-    if let config = Dispatcher.shared[.config] {
-      config.rx.ready
-        .observeOn(MainScheduler.instance)
-        .subscribe(onNext: { config in
-          print("Config did load: \(config)")
-        }).disposed(by: disposeBag)
-    }
-
-    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  public var window: UIWindow? {
+    get { return Dispatcher.shared[.coordinator]?.window }
+    set { assertionFailure("window setted should not be called directly") }
   }
 
   public override var services: [ServiceIds?] { return [
     .reachablity,
     .config,
+    .coordinator,
+    .firebaseAnalytics,
+    .analytics
     ]
-  }
-
-  // MARK: UISceneSession Lifecycle
-
-  @available(iOS 13.0, *)
-  func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-    // Called when a new scene session is being created.
-    // Use this method to select a configuration to create the new scene with.
-    return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-  }
-
-  @available(iOS 13.0, *)
-  func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-    // Called when the user discards a scene session.
-    // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-    // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
   }
 }

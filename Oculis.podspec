@@ -10,7 +10,22 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '10.0'
 
-  s.source_files = 'Sources/**/*'
+  s.default_subspec = 'Default'
+  s.static_framework = true
+
+  s.subspec 'Default' do |ss|
+  	ss.dependency 'Oculis/Core'
+  end
+
+  s.subspec 'Core' do |ss|
+  	ss.source_files = 'Sources/ConfigService/*.swift'
+  end
+
+  s.subspec 'AnalyticsServices' do |ss|
+  	ss.source_files = 'Sources/AnalyticsServices/*.swift'
+  	ss.dependency 'Firebase/Analytics'
+    ss.dependency 'Oculis/Core'
+  end
   
   s.dependency 'Astrarium'
   s.dependency 'Gnomon'

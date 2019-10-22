@@ -9,7 +9,6 @@
 import Foundation
 import Astrarium
 import Oculis
-import RxSwift
 import Gnomon
 import SwiftyJSON
 
@@ -20,13 +19,15 @@ extension ServiceIds {
   static let config = ServiceIdentifier<Config> {
     let url = "https://dl.dropboxusercontent.com/s/ybuxf7x7enmfo5d/legapro_init_dev.json"
 
-//    // Init settings with init url and local config name
-//    let settings = Config.Settings(initURL: url, localConfigName: "init")
-
+    /*
+    // Init settings with init url and local config name
+    let settings = Config.Settings(initURL: url, localConfigName: "init")
+    */
+    
     // Init settings with request and local config name
     let settings = Config.Settings(localConfigName: "init") {
       return try Request<ConfigModel>(URLString: url)
-      .setMethod(.GET)
+        .setMethod(.GET)
     }
 
     return Config(reachability: Dispatcher.shared[.reachablity], settings: settings)
