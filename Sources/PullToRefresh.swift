@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
 
 public enum Position {
     
@@ -24,7 +27,10 @@ public enum Position {
 }
 
 open class PullToRefresh: NSObject {
-    
+
+    let enabledSubject = PublishSubject<Bool>()
+    let isRefreshingSubject = PublishSubject<Bool>()
+
     open var position: Position = .top
     
     open var animationDuration: TimeInterval = 1
@@ -38,12 +44,13 @@ open class PullToRefresh: NSObject {
     #endif
     open var shouldBeVisibleWhileScrolling: Bool = false
     open var topPadding : CGFloat? = nil
-    
+
     let refreshView: UIView
     
     private(set) var isAutoenablePosible = true
     public internal(set) var isEnabled: Bool = false {
-        didSet{
+        didSet {
+            enabledSubject.onNext(isEnabled)
             refreshView.isHidden = !isEnabled
             if isEnabled {
                 addScrollViewObserving()
@@ -91,6 +98,7 @@ open class PullToRefresh: NSObject {
             switch state {
             case .loading:
                 if oldValue != .loading {
+                    isRefreshingSubject.onNext(true)
                     animateLoadingState()
                 }
                 
@@ -101,10 +109,11 @@ open class PullToRefresh: NSObject {
                     scrollView?.contentInset = self.scrollViewDefaultInsets
                     state = .initial
                 }
+                isRefreshingSubject.onNext(false)
 
             case .releasing(progress: let value) where value < 0.1:
                 state = .initial
-            
+
             default: break
             }
             self.enableOppositeRefresher(state == .initial)
@@ -369,4 +378,25 @@ private extension PullToRefresh {
         #endif
     }
     
+}
+
+extension Reactive where Base: PullToRefresh {
+
+  public var isEnabled: Observable<Bool> {
+    return base.enabledSubject.asObservable()
+  }
+
+  public var isRefreshing: Observable<Bool> {
+    return base.isRefreshingSubject.asObservable()
+  }
+
+  public var updateRefreshing: AnyObserver<Bool> {
+    return Binder<Bool>(base, binding: { target, isRefreshing in
+      if isRefreshing {
+        target.state = .loading
+      } else {
+        target.state = .finished
+      }
+    }).asObserver()
+  }
 }
