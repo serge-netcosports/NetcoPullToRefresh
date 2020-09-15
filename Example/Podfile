@@ -2,12 +2,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 use_frameworks!
 
-target 'Oculis_Example' do
+target 'NetcoPullToRefresh_Example' do
 
-  # Core with config service
-  pod 'Oculis/Core', :path => '../'
-
-  # Analytics services
-  pod 'Oculis/AnalyticsServices', :path => '../'
+	platform :ios, '11.0'
+	
+	pod 'NetcoPullToRefresh', :path => '../'
   
 end

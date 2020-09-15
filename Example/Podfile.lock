@@ -1,140 +1,39 @@
 PODS:
-  - Astrarium (5.0.0):
-    - Astrarium/Core (= 5.0.0)
-  - Astrarium/Core (5.0.0)
-  - Firebase/Analytics (6.10.0):
-    - Firebase/Core
-  - Firebase/Core (6.10.0):
-    - Firebase/CoreOnly
-    - FirebaseAnalytics (= 6.1.3)
-  - Firebase/CoreOnly (6.10.0):
-    - FirebaseCore (= 6.3.1)
-  - FirebaseAnalytics (6.1.3):
-    - FirebaseCore (~> 6.3)
-    - FirebaseInstanceID (~> 4.2)
-    - GoogleAppMeasurement (= 6.1.3)
-    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
-    - GoogleUtilities/MethodSwizzler (~> 6.0)
-    - GoogleUtilities/Network (~> 6.0)
-    - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - nanopb (~> 0.3.901)
-  - FirebaseCore (6.3.1):
-    - FirebaseCoreDiagnostics (~> 1.0)
-    - FirebaseCoreDiagnosticsInterop (~> 1.0)
-    - GoogleUtilities/Environment (~> 6.2)
-    - GoogleUtilities/Logger (~> 6.2)
-  - FirebaseCoreDiagnostics (1.1.1):
-    - FirebaseCoreDiagnosticsInterop (~> 1.0)
-    - GoogleDataTransportCCTSupport (~> 1.0)
-    - GoogleUtilities/Environment (~> 6.2)
-    - GoogleUtilities/Logger (~> 6.2)
-    - nanopb (~> 0.3.901)
-  - FirebaseCoreDiagnosticsInterop (1.0.0)
-  - FirebaseInstanceID (4.2.5):
-    - FirebaseCore (~> 6.0)
-    - GoogleUtilities/Environment (~> 6.0)
-    - GoogleUtilities/UserDefaults (~> 6.0)
-  - FormatterKit/Resources (1.9.0)
-  - FormatterKit/URLRequestFormatter (1.9.0):
-    - FormatterKit/Resources
-  - Gnomon (5.1):
-    - Gnomon/JSON (= 5.1)
-  - Gnomon/Core (5.1):
-    - FormatterKit/URLRequestFormatter (>= 1.8.2)
-    - RxSwift (~> 4.2)
-  - Gnomon/JSON (5.1):
-    - Gnomon/Core
-    - SwiftyJSON (~> 5.0)
-  - GoogleAppMeasurement (6.1.3):
-    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
-    - GoogleUtilities/MethodSwizzler (~> 6.0)
-    - GoogleUtilities/Network (~> 6.0)
-    - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - nanopb (~> 0.3.901)
-  - GoogleDataTransport (3.0.0)
-  - GoogleDataTransportCCTSupport (1.2.0):
-    - GoogleDataTransport (~> 3.0)
-    - nanopb (~> 0.3.901)
-  - GoogleUtilities/AppDelegateSwizzler (6.3.1):
-    - GoogleUtilities/Environment
-    - GoogleUtilities/Logger
-    - GoogleUtilities/Network
-  - GoogleUtilities/Environment (6.3.1)
-  - GoogleUtilities/Logger (6.3.1):
-    - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.3.1):
-    - GoogleUtilities/Logger
-  - GoogleUtilities/Network (6.3.1):
-    - GoogleUtilities/Logger
-    - "GoogleUtilities/NSData+zlib"
-    - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (6.3.1)"
-  - GoogleUtilities/Reachability (6.3.1):
-    - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (6.3.1):
-    - GoogleUtilities/Logger
-  - nanopb (0.3.901):
-    - nanopb/decode (= 0.3.901)
-    - nanopb/encode (= 0.3.901)
-  - nanopb/decode (0.3.901)
-  - nanopb/encode (0.3.901)
-  - Oculis/AnalyticsServices (0.1.0):
-    - Astrarium
-    - Firebase/Analytics
-    - Gnomon
-    - Oculis/Core
-  - Oculis/Core (0.1.0):
-    - Astrarium
-    - Gnomon
-  - RxSwift (4.5.0)
-  - SwiftyJSON (5.0.0)
+  - NetcoPullToRefresh (0.1.0):
+    - NVActivityIndicatorView (~> 4.8.0)
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+  - NVActivityIndicatorView (4.8.0):
+    - NVActivityIndicatorView/Presenter (= 4.8.0)
+  - NVActivityIndicatorView/Presenter (4.8.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
 
 DEPENDENCIES:
-  - Oculis/AnalyticsServices (from `../`)
-  - Oculis/Core (from `../`)
+  - NetcoPullToRefresh (from `../`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - Astrarium
-    - Firebase
-    - FirebaseAnalytics
-    - FirebaseCore
-    - FirebaseCoreDiagnostics
-    - FirebaseCoreDiagnosticsInterop
-    - FirebaseInstanceID
-    - FormatterKit
-    - Gnomon
-    - GoogleAppMeasurement
-    - GoogleDataTransport
-    - GoogleDataTransportCCTSupport
-    - GoogleUtilities
-    - nanopb
+    - NVActivityIndicatorView
+    - RxCocoa
+    - RxRelay
     - RxSwift
-    - SwiftyJSON
 
 EXTERNAL SOURCES:
-  Oculis:
+  NetcoPullToRefresh:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Astrarium: 24cf99dbf501b14ecad683d79d10b9fd2ec79272
-  Firebase: 5e6b7b12bf9adb90986688edc06b156c37e109cd
-  FirebaseAnalytics: 0e3ecff2c5d86070f7d4325e21f1edabfbd558dc
-  FirebaseCore: 064c2dd92a8ca5974bbdcb080df9921e46bd34cd
-  FirebaseCoreDiagnostics: af29e43048607588c050889d19204f4d7b758c9f
-  FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
-  FirebaseInstanceID: 550df9be1f99f751d8fcde3ac342a1e21a0e6c42
-  FormatterKit: 184db51bf120b633693a73624a4cede89ec51a41
-  Gnomon: 0a0af64a703bf49e349e16350e472420459ec5f4
-  GoogleAppMeasurement: 434cc7be25e71dc04b8d0e3079125127b330e84a
-  GoogleDataTransport: f6fe28f43e3a300736854260961ad485b473edc5
-  GoogleDataTransportCCTSupport: 862418a8cdda520c4dd4af83a756d04efe4a6990
-  GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
-  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Oculis: 04879f45d45231c59c5ae9fe160b4f4f76f93d9a
-  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
-  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  NetcoPullToRefresh: 74b0db495d49d8d67bc20c62a7d4d6dd84088357
+  NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: cc298fb9cf9a985e82d2914d76d9bca93c3f87a1
+PODFILE CHECKSUM: abf16b2ecf1ca980f58b04dfa7c04cd781414bc4
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.9.3
