@@ -267,7 +267,7 @@ extension PullToRefresh {
             }
         }
         state = .loading
-        scrollView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
+//        scrollView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
     }
     
     func endRefreshing() {
@@ -304,47 +304,47 @@ private extension PullToRefresh {
             return
         }
         
-        scrollView.contentOffset = previousScrollViewOffset
-        scrollView.bounces = false
-        UIView.animate(
-            withDuration: 0.3,
-            animations: {
-                switch self.position {
-                case .top:
-                    let insetY = self.refreshView.frame.height + self.scrollViewDefaultInsets.top
-                    scrollView.contentInset.top = insetY
-                    scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x, y: -insetY)
-                case .bottom:
-                    let insetY = self.refreshView.frame.height + self.scrollViewDefaultInsets.bottom
-                    scrollView.contentInset.bottom = insetY
-                }
-            },
-            completion: { _ in
-                scrollView.bounces = true
+//        scrollView.contentOffset = previousScrollViewOffset
+//        scrollView.bounces = false
+//        UIView.animate(
+//            withDuration: 0.3,
+//            animations: {
+//                switch self.position {
+//                case .top:
+//                    let insetY = self.refreshView.frame.height + self.scrollViewDefaultInsets.top
+//                    scrollView.contentInset.top = insetY
+//                    scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x, y: -insetY)
+//                case .bottom:
+//                    let insetY = self.refreshView.frame.height + self.scrollViewDefaultInsets.bottom
+//                    scrollView.contentInset.bottom = insetY
+//                }
+//            },
+//            completion: { _ in
+//                scrollView.bounces = true
                 if self.shouldBeVisibleWhileScrolling {
                     self.bringRefreshViewToSuperview()
                 }
-            }
-        )
+//            }
+//        )
         action?()
     }
     
     func animateFinishedState() {
         removeScrollViewObserving()
-        UIView.animate(
-            withDuration: animationDuration,
-            delay: hideDelay,
-            usingSpringWithDamping: springDamping,
-            initialSpringVelocity: initialSpringVelocity,
-            options: animationOptions,
-            animations: {
-                self.scrollView?.contentInset = self.scrollViewDefaultInsets
-            },
-            completion: { _ in
+//        UIView.animate(
+//            withDuration: animationDuration,
+//            delay: hideDelay,
+//            usingSpringWithDamping: springDamping,
+//            initialSpringVelocity: initialSpringVelocity,
+//            options: animationOptions,
+//            animations: {
+//                self.scrollView?.contentInset = self.scrollViewDefaultInsets
+//            },
+//            completion: { _ in
                 self.addScrollViewObserving()
                 self.state = .initial
-            }
-        )
+//            }
+//        )
     }
 }
 
