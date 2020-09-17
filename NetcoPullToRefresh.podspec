@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'NetcoPullToRefresh'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'NetcoPullToRefresh is a custom Netco pull to refresh for iOS'
 
   s.homepage         = 'https://github.com/serge-netcosports/NetcoPullToRefresh'
